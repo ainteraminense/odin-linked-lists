@@ -3,7 +3,7 @@ import {Node} from "./node.js"
 export class LinkedList {
     constructor() {
         this.head = undefined;
-    }
+    };
 
     append(value) {
         const node = new Node(value, null);
@@ -16,7 +16,7 @@ export class LinkedList {
             } 
             temp.next = node;
         }
-    }
+    };
 
     prepend(value) {
         const node = new Node(value, null);
@@ -26,25 +26,25 @@ export class LinkedList {
         node.next = this.head;
         this.head = node;
         }
-    }
+    };
 
     size() {
         if (this.head === undefined) {
             return 0;
         } else {
             let temp = this.head;
-            count = 0;
+            let count = 0;
             while (temp.next != null) {
                 temp = temp.next;
                 count++;
             }
             return count;
         }
-    }
+    };
 
-    head() {
-        return this.head;
-    }
+    listHead() {
+        return this.head.value;
+    };
 
     tail() {
         if (this.head === undefined) {
@@ -54,7 +54,7 @@ export class LinkedList {
             while(temp.next != null) {
                 temp = temp.next;
             }
-            return temp;
+            return temp.value;
         }
     }
 
@@ -66,8 +66,9 @@ export class LinkedList {
             let temp = this.head;
             while (count != index) {
                 temp = temp.next;
+                count++;
             }
-            return temp;
+            return temp.value;
         }
     }
 
@@ -77,7 +78,7 @@ export class LinkedList {
         } else {
             let pop = this.head;
             this.head = this.head.next;
-            return pop;
+            return pop.value;
         }
     }
 
@@ -120,6 +121,7 @@ export class LinkedList {
             result = result + `( ${temp.value} ) -> `;
             temp = temp.next;
         }
+        result = result + `( ${temp.value} )`;
         return result;
     }
 }
